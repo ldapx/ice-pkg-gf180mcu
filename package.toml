@@ -1,0 +1,121 @@
+[package]
+schema_version = 1
+name = "gf180mcu"
+version = "0.1.0"
+description = "GlobalFoundries GF180MCU 180 nm CMOS open-source PDK"
+license = "Apache-2.0"
+
+[source]
+type = "git"
+url = "https://github.com/google/gf180mcu-pdk.git"
+revision = "main"
+
+[provides]
+pdk = true
+models = true
+symbols = true
+layout = true
+verification = true
+
+[trust]
+trusted = false
+
+[pdk]
+display_name = "GlobalFoundries GF180MCU"
+default_schematic = "gf180mcu_top"
+
+[[pdk.layer]]
+name = "comp"
+number = 22
+
+[[pdk.layer]]
+name = "dnwell"
+number = 12
+
+[[pdk.layer]]
+name = "nwell"
+number = 21
+
+[[pdk.layer]]
+name = "lvpwell"
+number = 204
+
+[[pdk.layer]]
+name = "dualgate"
+number = 55
+
+[[pdk.layer]]
+name = "poly2"
+number = 30
+
+[[pdk.layer]]
+name = "nplus"
+number = 32
+
+[[pdk.layer]]
+name = "pplus"
+number = 31
+
+[[pdk.layer]]
+name = "sab"
+number = 49
+
+[[pdk.layer]]
+name = "contact"
+number = 33
+
+[[pdk.layer]]
+name = "metal1"
+number = 34
+
+[[pdk.layer]]
+name = "via1"
+number = 35
+
+[[pdk.layer]]
+name = "metal2"
+number = 36
+
+[[pdk.layer]]
+name = "via2"
+number = 38
+
+[[pdk.layer]]
+name = "metal3"
+number = 42
+
+[[pdk.layer]]
+name = "via3"
+number = 40
+
+[[pdk.layer]]
+name = "metal4"
+number = 46
+
+[[pdk.layer]]
+name = "via4"
+number = 41
+
+[[pdk.layer]]
+name = "metal5"
+number = 81
+
+[[pdk.layer]]
+name = "via5"
+number = 82
+
+[[pdk.layer]]
+name = "metaltop"
+number = 53
+
+[[pdk.layer]]
+name = "pad"
+number = 37
+
+[[pdk.layer]]
+name = "resistor"
+number = 62
+
+[[pdk.layer]]
+name = "fusetop"
+number = 75

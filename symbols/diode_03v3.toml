@@ -1,0 +1,20 @@
+[symbol]
+name = "GF180 Diode 3.3V"
+artwork = "generic:diode.svg"
+category = "Semiconductor"
+
+[[pin]]
+name = "A"
+x = -21
+y = 0
+direction = "input"
+
+[[pin]]
+name = "K"
+x = 21
+y = 0
+direction = "output"
+
+[[parameter]]
+name = "model"
+value = "diode_nd2ps_03v3"

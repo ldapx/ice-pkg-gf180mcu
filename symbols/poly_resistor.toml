@@ -1,0 +1,24 @@
+[symbol]
+name = "GF180 Poly Resistor"
+artwork = "generic:resistor.svg"
+category = "Passive"
+
+[[pin]]
+name = "1"
+x = -16
+y = 0
+direction = "inout"
+
+[[pin]]
+name = "2"
+x = 16
+y = 0
+direction = "inout"
+
+[[parameter]]
+name = "model"
+value = "ppolyf_u_2k"
+
+[[parameter]]
+name = "resistance"
+value = "2k"

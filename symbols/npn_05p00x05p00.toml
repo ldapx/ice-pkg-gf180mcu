@@ -1,0 +1,26 @@
+[symbol]
+name = "GF180 NPN 5x5"
+artwork = "generic:npn_bjt.svg"
+category = "Transistor"
+
+[[pin]]
+name = "B"
+x = -32
+y = 0
+direction = "input"
+
+[[pin]]
+name = "C"
+x = 31
+y = 32
+direction = "inout"
+
+[[pin]]
+name = "E"
+x = 31
+y = -32
+direction = "inout"
+
+[[parameter]]
+name = "model"
+value = "npn_05p00x05p00"

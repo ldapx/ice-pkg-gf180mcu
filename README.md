@@ -28,6 +28,27 @@ The package ships sidecar definitions for core GF180MCU devices:
 The sidecars reference ICE's shared artwork with `generic:<file>.svg`, so the
 package does not include duplicate SVG files.
 
+## Layout PCells
+
+The package ships ICE-native PCell replicas under `layout/`:
+
+- `layout/pcells.py` implements the GF180MCU PCell families with the
+  `icepy.pcells` layout builder API (MOS, BJT, MOS/MIM capacitors, diodes, and
+  the full poly/diffusion/well/metal resistor family).
+- `layout/devices.json` is the generated ICE layout device library used by the
+  Devices panel. It contains default geometry, parameter metadata, and
+  generator bindings.
+- `layout/device_generator.py` regenerates geometry when a parameter changes.
+- `layout/generate_devices.py` rebuilds the library from the PCell definitions.
+
+The PCells do not require KLayout, Volare, CIEL, or `PDK_ROOT`. Regenerate the
+library after editing `layout/pcells.py`:
+
+```text
+PYTHONPATH=<ice>/build/linux/x86_64/release:<ice>/python \
+  python3 layout/generate_devices.py
+```
+
 ## Simulation
 
 The package declares `[pdk.simulation]` in `package.toml`: `design.ngspice`,

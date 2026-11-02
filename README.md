@@ -5,9 +5,9 @@ definition for ICE. It points to the upstream PDK repository:
 
 <https://github.com/google/gf180mcu-pdk>
 
-The upstream PDK is treated as an external package source and remains subject
-to its own Apache-2.0 license, installation prerequisites, and verification
-status.
+The package also contains the GF180MCU ngspice simulation subset under
+`libs.tech/ngspice` (`design.ngspice` and `sm141064*.ngspice`). Simulation
+depends only on this ICE package, not on Volare, CIEL, or `PDK_ROOT`.
 
 ## PDK metadata
 
@@ -27,3 +27,9 @@ The package ships sidecar definitions for core GF180MCU devices:
 
 The sidecars reference ICE's shared artwork with `generic:<file>.svg`, so the
 package does not include duplicate SVG files.
+
+## Simulation
+
+The package declares `[pdk.simulation]` in `package.toml`: `design.ngspice`,
+`sm141064.ngspice`, section `typical`, and the GF180MCU NMOS/PMOS device names.
+Verify with `ice-cli pdk-info gf180mcuA --probe`.

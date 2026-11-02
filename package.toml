@@ -24,6 +24,22 @@ trusted = false
 display_name = "GlobalFoundries GF180MCU"
 default_schematic = "gf180mcu_top"
 
+id = "gf180mcuA"
+aliases = ["gf180mcu", "gf180mcua"]
+
+[pdk.simulation]
+engine = "ngspice"
+root = "libs.tech/ngspice"
+model_file = "sm141064.ngspice"
+section = "typical"
+includes = ["design.ngspice"]
+options = []
+requires_osdi = false
+
+[pdk.simulation.devices]
+nmos = "nfet_03v3"
+pmos = "pfet_03v3"
+
 [[pdk.layer]]
 name = "comp"
 number = 22

@@ -42,6 +42,7 @@ def build_library(package_root: Path) -> dict:
                 "source": "layout/pcells.py",
                 "bounds": geometry["bounds"],
                 "shapes": geometry["shapes"],
+                "ports": geometry.get("ports", []),
                 "parameters": [dict(spec) for spec in implementation.parameters],
                 "generator": {
                     "module": "pcells",
@@ -63,7 +64,7 @@ def build_library(package_root: Path) -> dict:
 
     return {
         "format": "ice-layout-device-library",
-        "schema_version": 1,
+        "schema_version": 2,
         "name": "GlobalFoundries GF180MCU",
         "pdk": pcells.PDK,
         "cell_prefix": "GF180 ",

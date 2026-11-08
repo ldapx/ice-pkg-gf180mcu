@@ -51,16 +51,22 @@ def build_library(package_root: Path) -> dict:
             }
         )
 
-    layers = []
-    seen = set()
-    for name, (label, number) in sorted(
-        pcells.LAYERS.items(), key=lambda item: item[1][1]
-    ):
-        key = (number, 0)
-        if key in seen:
-            continue
-        seen.add(key)
-        layers.append({"name": label, "number": number, "datatype": 0})
+    stream_specs = list(pcells.LAYERS.values()) + list(
+        getattr(pcells, "EXTRA_LAYER_STREAMS", [])
+    )
+    streams = {}
+    for spec in stream_specs:
+        if len(spec) == 2:
+            label, number = spec
+            datatype = 0
+        else:
+            label, number, datatype = spec
+        streams[(int(number), int(datatype))] = {
+            "name": str(label),
+            "number": int(number),
+            "datatype": int(datatype),
+        }
+    layers = [streams[key] for key in sorted(streams)]
 
     return {
         "format": "ice-layout-device-library",

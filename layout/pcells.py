@@ -33,6 +33,40 @@ LAYERS = {
     "fusetop": ("fusetop", 75),
 }
 
+# Additional PDK purposes exposed in the Layers panel. The base layers above
+# are used by the PCell templates; these entries document the remaining GDS
+# datatypes from the GF180MCU layer map.
+EXTRA_LAYER_STREAMS = [
+    ("comp.dummy", 22, 4),
+    ("comp.label", 22, 10),
+    ("poly2.dummy", 30, 4),
+    ("poly2.label", 30, 10),
+    ("metal1.slot", 34, 3),
+    ("metal1.dummy", 34, 4),
+    ("metal1.block", 34, 5),
+    ("metal1.label", 34, 10),
+    ("metal2.slot", 36, 3),
+    ("metal2.dummy", 36, 4),
+    ("metal2.block", 36, 5),
+    ("metal2.label", 36, 10),
+    ("metal3.slot", 42, 3),
+    ("metal3.dummy", 42, 4),
+    ("metal3.block", 42, 5),
+    ("metal3.label", 42, 10),
+    ("metal4.slot", 46, 3),
+    ("metal4.dummy", 46, 4),
+    ("metal4.block", 46, 5),
+    ("metal4.label", 46, 10),
+    ("metal5.slot", 81, 3),
+    ("metal5.dummy", 81, 4),
+    ("metal5.block", 81, 5),
+    ("metal5.label", 81, 10),
+    ("metaltop.slot", 53, 3),
+    ("metaltop.dummy", 53, 4),
+    ("metaltop.block", 53, 5),
+    ("metaltop.label", 53, 10),
+]
+
 
 def parameter(name: str, value: str, description: str) -> dict[str, str]:
     return {"name": name, "value": value, "description": description}

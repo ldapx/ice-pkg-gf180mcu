@@ -26,6 +26,7 @@ default_schematic = "gf180mcu_top"
 
 id = "gf180mcuA"
 aliases = ["gf180mcu", "gf180mcua"]
+default_stack = "5LM_1TM"
 
 [pdk.simulation]
 engine = "ngspice"
@@ -135,3 +136,23 @@ number = 62
 [[pdk.layer]]
 name = "fusetop"
 number = 75
+
+[[pdk.stack]]
+id = "3LM_1TM"
+display_name = "3 metal layers (Metal1-Metal3)"
+layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3"]
+
+[[pdk.stack]]
+id = "4LM_1TM"
+display_name = "4 metal layers (Metal1-Metal4)"
+layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "via3", "metal4"]
+
+[[pdk.stack]]
+id = "5LM_1TM"
+display_name = "5 metal layers (Metal1-Metal5)"
+layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "via3", "metal4", "via4", "metal5"]
+
+[[pdk.stack]]
+id = "6LM_1TM"
+display_name = "6 metal layers (Metal1-MetalTop)"
+layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "via3", "metal4", "via4", "metal5", "via5", "metaltop"]

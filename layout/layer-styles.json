@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "layers": [
+    {
+      "name": "dnwell",
+      "number": 12,
+      "datatype": 0,
+      "color": "#8b6f47",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "nwell",
+      "number": 21,
+      "datatype": 0,
+      "color": "#b07d4f",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "comp",
+      "number": 22,
+      "datatype": 0,
+      "color": "#2ecc71",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "comp.dummy",
+      "number": 22,
+      "datatype": 4,
+      "color": "#2ecc71",
+      "pattern": "Cross hatch",
+      "visible": false
+    },
+    {
+      "name": "comp.label",
+      "number": 22,
+      "datatype": 10,
+      "color": "#2ecc71",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "poly2",
+      "number": 30,
+      "datatype": 0,
+      "color": "#d35400",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "poly2.dummy",
+      "number": 30,
+      "datatype": 4,
+      "color": "#d35400",
+      "pattern": "Cross hatch",
+      "visible": false
+    },
+    {
+      "name": "poly2.label",
+      "number": 30,
+      "datatype": 10,
+      "color": "#d35400",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "pplus",
+      "number": 31,
+      "datatype": 0,
+      "color": "#66aa00",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "nplus",
+      "number": 32,
+      "datatype": 0,
+      "color": "#b82e2e",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "contact",
+      "number": 33,
+      "datatype": 0,
+      "color": "#7f8c8d",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "metal1",
+      "number": 34,
+      "datatype": 0,
+      "color": "#3498db",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "metal1.slot",
+      "number": 34,
+      "datatype": 3,
+      "color": "#3498db",
+      "pattern": "Sparse dots",
+      "visible": false
+    },
+    {
+      "name": "metal1.dummy",
+      "number": 34,
+      "datatype": 4,
+      "color": "#3498db",
+      "pattern": "Cross hatch",
+      "visible": false
+    },
+    {
+      "name": "metal1.block",
+      "number": 34,
+      "datatype": 5,
+      "color": "#3498db",
+      "pattern": "Diagonal \\",
+      "visible": false
+    },
+    {
+      "name": "metal1.label",
+      "number": 34,
+      "datatype": 10,
+      "color": "#3498db",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "metal2",
+      "number": 36,
+      "datatype": 0,
+      "color": "#27ae60",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "metal2.slot",
+      "number": 36,
+      "datatype": 3,
+      "color": "#27ae60",
+      "pattern": "Sparse dots",
+      "visible": false
+    },
+    {
+      "name": "metal2.dummy",
+      "number": 36,
+      "datatype": 4,
+      "color": "#27ae60",
+      "pattern": "Cross hatch",
+      "visible": false
+    },
+    {
+      "name": "metal2.block",
+      "number": 36,
+      "datatype": 5,
+      "color": "#27ae60",
+      "pattern": "Diagonal \\",
+      "visible": false
+    },
+    {
+      "name": "metal2.label",
+      "number": 36,
+      "datatype": 10,
+      "color": "#27ae60",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "pad",
+      "number": 37,
+      "datatype": 0,
+      "color": "#d4af37",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "metal3",
+      "number": 42,
+      "datatype": 0,
+      "color": "#e67e22",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "metal3.slot",
+      "number": 42,
+      "datatype": 3,
+      "color": "#e67e22",
+      "pattern": "Sparse dots",
+      "visible": false
+    },
+    {
+      "name": "metal3.dummy",
+      "number": 42,
+      "datatype": 4,
+      "color": "#e67e22",
+      "pattern": "Cross hatch",
+      "visible": false
+    },
+    {
+      "name": "metal3.block",
+      "number": 42,
+      "datatype": 5,
+      "color": "#e67e22",
+      "pattern": "Diagonal \\",
+      "visible": false
+    },
+    {
+      "name": "metal3.label",
+      "number": 42,
+      "datatype": 10,
+      "color": "#e67e22",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "metal4",
+      "number": 46,
+      "datatype": 0,
+      "color": "#9b59b6",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "metal4.slot",
+      "number": 46,
+      "datatype": 3,
+      "color": "#9b59b6",
+      "pattern": "Sparse dots",
+      "visible": false
+    },
+    {
+      "name": "metal4.dummy",
+      "number": 46,
+      "datatype": 4,
+      "color": "#9b59b6",
+      "pattern": "Cross hatch",
+      "visible": false
+    },
+    {
+      "name": "metal4.block",
+      "number": 46,
+      "datatype": 5,
+      "color": "#9b59b6",
+      "pattern": "Diagonal \\",
+      "visible": false
+    },
+    {
+      "name": "metal4.label",
+      "number": 46,
+      "datatype": 10,
+      "color": "#9b59b6",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "metaltop",
+      "number": 53,
+      "datatype": 0,
+      "color": "#f1c40f",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "metaltop.slot",
+      "number": 53,
+      "datatype": 3,
+      "color": "#f1c40f",
+      "pattern": "Sparse dots",
+      "visible": false
+    },
+    {
+      "name": "metaltop.dummy",
+      "number": 53,
+      "datatype": 4,
+      "color": "#f1c40f",
+      "pattern": "Cross hatch",
+      "visible": false
+    },
+    {
+      "name": "metaltop.block",
+      "number": 53,
+      "datatype": 5,
+      "color": "#f1c40f",
+      "pattern": "Diagonal \\",
+      "visible": false
+    },
+    {
+      "name": "metaltop.label",
+      "number": 53,
+      "datatype": 10,
+      "color": "#f1c40f",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "resistor",
+      "number": 62,
+      "datatype": 0,
+      "color": "#c0392b",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "fusetop",
+      "number": 75,
+      "datatype": 0,
+      "color": "#95a5a6",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "metal5",
+      "number": 81,
+      "datatype": 0,
+      "color": "#e74c3c",
+      "pattern": "Solid",
+      "visible": true
+    },
+    {
+      "name": "metal5.slot",
+      "number": 81,
+      "datatype": 3,
+      "color": "#e74c3c",
+      "pattern": "Sparse dots",
+      "visible": false
+    },
+    {
+      "name": "metal5.dummy",
+      "number": 81,
+      "datatype": 4,
+      "color": "#e74c3c",
+      "pattern": "Cross hatch",
+      "visible": false
+    },
+    {
+      "name": "metal5.block",
+      "number": 81,
+      "datatype": 5,
+      "color": "#e74c3c",
+      "pattern": "Diagonal \\",
+      "visible": false
+    },
+    {
+      "name": "metal5.label",
+      "number": 81,
+      "datatype": 10,
+      "color": "#e74c3c",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "lvpwell",
+      "number": 204,
+      "datatype": 0,
+      "color": "#9a7b4f",
+      "pattern": "Solid",
+      "visible": true
+    }
+  ]
+}

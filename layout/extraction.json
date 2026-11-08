@@ -1,0 +1,41 @@
+{
+  "format": "ice-device-extraction",
+  "schema_version": 1,
+  "pdk": "gf180mcuA",
+  "devices": [
+    {
+      "name": "nmos",
+      "type": "mos",
+      "model": "nfet_03v3",
+      "element": "X",
+      "active": "comp",
+      "gate": "poly2",
+      "exclude_layers": [
+        "nwell"
+      ],
+      "body_layer": "lvpwell",
+      "terminal_layers": [
+        "contact"
+      ],
+      "substrate": "0",
+      "length_axis": "auto"
+    },
+    {
+      "name": "pmos",
+      "type": "mos",
+      "model": "pfet_03v3",
+      "element": "X",
+      "active": "comp",
+      "gate": "poly2",
+      "require_layers": [
+        "nwell"
+      ],
+      "body_layer": "nwell",
+      "terminal_layers": [
+        "contact"
+      ],
+      "substrate": "0",
+      "length_axis": "auto"
+    }
+  ]
+}

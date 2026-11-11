@@ -67,7 +67,9 @@ PYTHONPATH=<ice>/build/linux/x86_64/release:<ice>/python \
   stacks;
 - `implementation/lib/` — `gf180mcu_fd_sc_mcu9t5v0` `tt_025C_5v00` Liberty;
 - `implementation/rcx/` — OpenRCX extraction rules for each stack;
-- `implementation/tapcell.tcl` — tapcell/endcap insertion hook.
+- `implementation/tapcell.tcl` — best-effort tapcell/endcap insertion hook.
+  If the floorplan site geometry cannot fit the endcap pattern, insertion is
+  skipped with a warning instead of aborting the floorplan stage.
 
 The default stack is `5LM_1TM`; the default corner is `tt`. No
 `OPENROAD_FLOW_SCRIPTS` environment variable is needed.

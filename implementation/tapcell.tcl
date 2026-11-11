@@ -9,6 +9,7 @@ if {![info exists ::env(ENDCAP_CELL)]} {
     set ::env(ENDCAP_CELL) "gf180mcu_fd_sc_mcu9t5v0__endcap"
 }
 
+if {[catch {
 tapcell \
     -no_cell_at_top_bottom \
     -endcap_cpp             "12" \
@@ -28,3 +29,7 @@ tapcell \
     -tbtie_cpp              16 \
     -halo_width_x           2 \
     -halo_width_y           2
+
+} tapcellError]} {
+    puts "warning: tapcell insertion skipped: $tapcellError"
+}

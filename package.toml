@@ -34,17 +34,6 @@ engine = "openroad"
 synthesis = "yosys"
 min_openroad = "2.0"
 min_yosys = "0.40"
-site = "GF018hv5v_green_sc9"
-io_horizontal_layers = ["Metal3"]
-io_vertical_layers = ["Metal4"]
-routing_min_layer = "Metal1"
-
-[pdk.implementation.orfs]
-platform = "gf180"
-track_option = "9t"
-power_option = "5v0"
-corner = "BC"
-liberty_pattern = "mcu9t5v0__tt_025C_5v00"
 
 [pdk.simulation]
 engine = "ngspice"
@@ -160,17 +149,77 @@ id = "3LM_1TM"
 display_name = "3 metal layers (Metal1-Metal3)"
 layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3"]
 
+
+[pdk.stack.implementation]
+site = "GF018hv5v_green_sc9"
+tech_lef = "implementation/lef/gf180mcu_3LM_1TM_9K_9t_tech.lef"
+cell_lef = "implementation/lef/gf180mcu_3LM_1TM_9K_9t_sc.lef"
+io_horizontal_layers = ["Metal3"]
+io_vertical_layers = ["Metal4"]
+routing_min_layer = "Metal1"
+routing_max_layer = "Metal3"
+rcx_rules = "implementation/rcx/gf180mcu_1p3m_1tm_9k_sp_smim_OPTA_bst.rules"
+tapcell_script = "implementation/tapcell.tcl"
+fill_cells = ["gf180mcu_fd_sc_mcu9t5v0__fill_64", "gf180mcu_fd_sc_mcu9t5v0__fill_32", "gf180mcu_fd_sc_mcu9t5v0__fill_16", "gf180mcu_fd_sc_mcu9t5v0__fill_8", "gf180mcu_fd_sc_mcu9t5v0__fill_4", "gf180mcu_fd_sc_mcu9t5v0__fill_2", "gf180mcu_fd_sc_mcu9t5v0__fill_1"]
+[pdk.stack.implementation.liberty]
+tt = ["implementation/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_5v00.lib.gz"]
+
 [[pdk.stack]]
 id = "4LM_1TM"
 display_name = "4 metal layers (Metal1-Metal4)"
 layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "via3", "metal4"]
+
+
+[pdk.stack.implementation]
+site = "GF018hv5v_green_sc9"
+tech_lef = "implementation/lef/gf180mcu_4LM_1TM_9K_9t_tech.lef"
+cell_lef = "implementation/lef/gf180mcu_4LM_1TM_9K_9t_sc.lef"
+io_horizontal_layers = ["Metal3"]
+io_vertical_layers = ["Metal4"]
+routing_min_layer = "Metal1"
+routing_max_layer = "Metal4"
+rcx_rules = "implementation/rcx/gf180mcu_1p4m_1tm_9k_sp_smim_OPTB_bst.rules"
+tapcell_script = "implementation/tapcell.tcl"
+fill_cells = ["gf180mcu_fd_sc_mcu9t5v0__fill_64", "gf180mcu_fd_sc_mcu9t5v0__fill_32", "gf180mcu_fd_sc_mcu9t5v0__fill_16", "gf180mcu_fd_sc_mcu9t5v0__fill_8", "gf180mcu_fd_sc_mcu9t5v0__fill_4", "gf180mcu_fd_sc_mcu9t5v0__fill_2", "gf180mcu_fd_sc_mcu9t5v0__fill_1"]
+[pdk.stack.implementation.liberty]
+tt = ["implementation/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_5v00.lib.gz"]
 
 [[pdk.stack]]
 id = "5LM_1TM"
 display_name = "5 metal layers (Metal1-Metal5)"
 layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "via3", "metal4", "via4", "metal5"]
 
+
+[pdk.stack.implementation]
+site = "GF018hv5v_green_sc9"
+tech_lef = "implementation/lef/gf180mcu_5LM_1TM_9K_9t_tech.lef"
+cell_lef = "implementation/lef/gf180mcu_5LM_1TM_9K_9t_sc.lef"
+io_horizontal_layers = ["Metal3"]
+io_vertical_layers = ["Metal4"]
+routing_min_layer = "Metal1"
+routing_max_layer = "Metal5"
+rcx_rules = "implementation/rcx/gf180mcu_1p5m_1tm_9k_sp_smim_OPTB_bst.rules"
+tapcell_script = "implementation/tapcell.tcl"
+fill_cells = ["gf180mcu_fd_sc_mcu9t5v0__fill_64", "gf180mcu_fd_sc_mcu9t5v0__fill_32", "gf180mcu_fd_sc_mcu9t5v0__fill_16", "gf180mcu_fd_sc_mcu9t5v0__fill_8", "gf180mcu_fd_sc_mcu9t5v0__fill_4", "gf180mcu_fd_sc_mcu9t5v0__fill_2", "gf180mcu_fd_sc_mcu9t5v0__fill_1"]
+[pdk.stack.implementation.liberty]
+tt = ["implementation/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_5v00.lib.gz"]
+
 [[pdk.stack]]
 id = "6LM_1TM"
 display_name = "6 metal layers (Metal1-MetalTop)"
 layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "via3", "metal4", "via4", "metal5", "via5", "metaltop"]
+
+
+[pdk.stack.implementation]
+site = "GF018hv5v_green_sc9"
+tech_lef = "implementation/lef/gf180mcu_6LM_1TM_9K_9t_tech.lef"
+cell_lef = "implementation/lef/gf180mcu_6LM_1TM_9K_9t_sc.lef"
+io_horizontal_layers = ["Metal3"]
+io_vertical_layers = ["Metal4"]
+routing_min_layer = "Metal1"
+routing_max_layer = "MetalTop"
+rcx_rules = "implementation/rcx/gf180mcu_1p6m_1tm_9k_sp_smim_OPTB_bst.rules"
+tapcell_script = "implementation/tapcell.tcl"
+fill_cells = ["gf180mcu_fd_sc_mcu9t5v0__fill_64", "gf180mcu_fd_sc_mcu9t5v0__fill_32", "gf180mcu_fd_sc_mcu9t5v0__fill_16", "gf180mcu_fd_sc_mcu9t5v0__fill_8", "gf180mcu_fd_sc_mcu9t5v0__fill_4", "gf180mcu_fd_sc_mcu9t5v0__fill_2", "gf180mcu_fd_sc_mcu9t5v0__fill_1"]
+[pdk.stack.implementation.liberty]
+tt = ["implementation/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_5v00.lib.gz"]

@@ -1,13 +1,17 @@
 # GlobalFoundries GF180MCU package
 
 This package provides the GlobalFoundries GF180MCU 180 nm CMOS open-source PDK
-definition for ICE. It points to the upstream PDK repository:
+definition for ICE. It is self-contained for simulation and the 9-track 5 V
+digital implementation flow; it does not require Volare, CIEL, `PDK_ROOT`, or
+an external OpenROAD-flow-scripts checkout.
 
-<https://github.com/google/gf180mcu-pdk>
+The package contains:
 
-The package also contains the GF180MCU ngspice simulation subset under
-`libs.tech/ngspice` (`design.ngspice` and `sm141064*.ngspice`). Simulation
-depends only on this ICE package, not on Volare, CIEL, or `PDK_ROOT`.
+- the GF180MCU ngspice simulation subset under `libs.tech/ngspice`
+  (`design.ngspice` and `sm141064*.ngspice`);
+- the 9-track, 5 V standard-cell implementation set under `implementation/`
+  (technology/cell LEF, Liberty, OpenRCX rules, and a tapcell hook for all four
+  metal stacks).
 
 ## PDK metadata
 
@@ -53,6 +57,20 @@ library after editing `layout/pcells.py`:
 PYTHONPATH=<ice>/build/linux/x86_64/release:<ice>/python \
   python3 layout/generate_devices.py
 ```
+
+## Physical implementation
+
+`package.toml` declares explicit per-stack implementation data for the
+9-track, 5 V standard-cell library:
+
+- `implementation/lef/` — technology and cell LEF for 3LM, 4LM, 5LM, and 6LM
+  stacks;
+- `implementation/lib/` — `gf180mcu_fd_sc_mcu9t5v0` `tt_025C_5v00` Liberty;
+- `implementation/rcx/` — OpenRCX extraction rules for each stack;
+- `implementation/tapcell.tcl` — tapcell/endcap insertion hook.
+
+The default stack is `5LM_1TM`; the default corner is `tt`. No
+`OPENROAD_FLOW_SCRIPTS` environment variable is needed.
 
 ## Simulation
 

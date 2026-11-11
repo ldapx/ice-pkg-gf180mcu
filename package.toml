@@ -16,6 +16,7 @@ models = true
 symbols = true
 layout = true
 verification = true
+implementation = true
 
 [trust]
 trusted = false
@@ -27,6 +28,23 @@ default_schematic = "gf180mcu_top"
 id = "gf180mcuA"
 aliases = ["gf180mcu", "gf180mcua"]
 default_stack = "5LM_1TM"
+
+[pdk.implementation]
+engine = "openroad"
+synthesis = "yosys"
+min_openroad = "2.0"
+min_yosys = "0.40"
+site = "GF018hv5v_green_sc9"
+io_horizontal_layers = ["Metal3"]
+io_vertical_layers = ["Metal4"]
+routing_min_layer = "Metal1"
+
+[pdk.implementation.orfs]
+platform = "gf180"
+track_option = "9t"
+power_option = "5v0"
+corner = "BC"
+liberty_pattern = "mcu9t5v0__tt_025C_5v00"
 
 [pdk.simulation]
 engine = "ngspice"

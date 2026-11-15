@@ -168,18 +168,104 @@ name = "fusetop"
 number = 75
 minimum_width = 0
 
+[[pdk.layer]]
+name = "outline"
+number = 0
+datatype = 0
+minimum_width = 0
+
+[[pdk.layer]]
+name = "nat"
+number = 5
+datatype = 0
+minimum_width = 0
+
+[[pdk.layer]]
+name = "nwell.label"
+number = 21
+datatype = 10
+minimum_width = 0
+
+[[pdk.layer]]
+name = "comp.label"
+number = 22
+datatype = 10
+minimum_width = 0
+
+[[pdk.layer]]
+name = "poly2.label"
+number = 30
+datatype = 10
+minimum_width = 0
+
+[[pdk.layer]]
+name = "metal1.label"
+number = 34
+datatype = 10
+minimum_width = 0
+
+[[pdk.layer]]
+name = "metal2.label"
+number = 36
+datatype = 10
+minimum_width = 0
+
+[[pdk.layer]]
+name = "metal3.label"
+number = 42
+datatype = 10
+minimum_width = 0
+
+[[pdk.layer]]
+name = "metal4.label"
+number = 46
+datatype = 10
+minimum_width = 0
+
+[[pdk.layer]]
+name = "metal5.label"
+number = 81
+datatype = 10
+minimum_width = 0
+
+[[pdk.layer]]
+name = "metaltop.label"
+number = 53
+datatype = 10
+minimum_width = 0
+
+[[pdk.layer]]
+name = "v5_xtor"
+number = 112
+datatype = 1
+minimum_width = 0
+
+[[pdk.layer]]
+name = "lvpwell.label"
+number = 204
+datatype = 10
+minimum_width = 0
+
+[[pdk.layer]]
+name = "vendor"
+number = 63
+datatype = 63
+minimum_width = 0
+
 [[pdk.stack]]
 id = "3LM_1TM"
 display_name = "3 metal layers (Metal1-Metal3)"
-layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3"]
+layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "outline", "nat", "v5_xtor", "vendor"]
 
 
 [pdk.stack.implementation]
 site = "GF018hv5v_green_sc9"
 tech_lef = "implementation/lef/gf180mcu_3LM_1TM_9K_9t_tech.lef"
 cell_lef = "implementation/lef/gf180mcu_3LM_1TM_9K_9t_sc.lef"
-io_horizontal_layers = ["Metal3"]
-io_vertical_layers = ["Metal4"]
+gds = "implementation/gds/gf180mcu_fd_sc_mcu9t5v0.gds"
+layer_map = "implementation/gds/gf180mcu.map"
+io_horizontal_layers = ["Metal3", "outline", "nat", "v5_xtor", "vendor"]
+io_vertical_layers = ["Metal4", "outline", "nat", "v5_xtor", "vendor"]
 routing_min_layer = "Metal1"
 routing_max_layer = "Metal3"
 rcx_rules = "implementation/rcx/gf180mcu_1p3m_1tm_9k_sp_smim_OPTA_bst.rules"
@@ -191,15 +277,17 @@ tt = ["implementation/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_5v00.lib.gz"]
 [[pdk.stack]]
 id = "4LM_1TM"
 display_name = "4 metal layers (Metal1-Metal4)"
-layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "via3", "metal4"]
+layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "via3", "metal4", "outline", "nat", "v5_xtor", "vendor"]
 
 
 [pdk.stack.implementation]
 site = "GF018hv5v_green_sc9"
 tech_lef = "implementation/lef/gf180mcu_4LM_1TM_9K_9t_tech.lef"
 cell_lef = "implementation/lef/gf180mcu_4LM_1TM_9K_9t_sc.lef"
-io_horizontal_layers = ["Metal3"]
-io_vertical_layers = ["Metal4"]
+gds = "implementation/gds/gf180mcu_fd_sc_mcu9t5v0.gds"
+layer_map = "implementation/gds/gf180mcu.map"
+io_horizontal_layers = ["Metal3", "outline", "nat", "v5_xtor", "vendor"]
+io_vertical_layers = ["Metal4", "outline", "nat", "v5_xtor", "vendor"]
 routing_min_layer = "Metal1"
 routing_max_layer = "Metal4"
 rcx_rules = "implementation/rcx/gf180mcu_1p4m_1tm_9k_sp_smim_OPTB_bst.rules"
@@ -211,15 +299,17 @@ tt = ["implementation/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_5v00.lib.gz"]
 [[pdk.stack]]
 id = "5LM_1TM"
 display_name = "5 metal layers (Metal1-Metal5)"
-layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "via3", "metal4", "via4", "metal5"]
+layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "via3", "metal4", "via4", "metal5", "outline", "nat", "v5_xtor", "vendor"]
 
 
 [pdk.stack.implementation]
 site = "GF018hv5v_green_sc9"
 tech_lef = "implementation/lef/gf180mcu_5LM_1TM_9K_9t_tech.lef"
 cell_lef = "implementation/lef/gf180mcu_5LM_1TM_9K_9t_sc.lef"
-io_horizontal_layers = ["Metal3"]
-io_vertical_layers = ["Metal4"]
+gds = "implementation/gds/gf180mcu_fd_sc_mcu9t5v0.gds"
+layer_map = "implementation/gds/gf180mcu.map"
+io_horizontal_layers = ["Metal3", "outline", "nat", "v5_xtor", "vendor"]
+io_vertical_layers = ["Metal4", "outline", "nat", "v5_xtor", "vendor"]
 routing_min_layer = "Metal1"
 routing_max_layer = "Metal5"
 rcx_rules = "implementation/rcx/gf180mcu_1p5m_1tm_9k_sp_smim_OPTB_bst.rules"
@@ -231,15 +321,17 @@ tt = ["implementation/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_5v00.lib.gz"]
 [[pdk.stack]]
 id = "6LM_1TM"
 display_name = "6 metal layers (Metal1-MetalTop)"
-layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "via3", "metal4", "via4", "metal5", "via5", "metaltop"]
+layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "pplus", "sab", "contact", "pad", "resistor", "fusetop", "metal1", "via1", "metal2", "via2", "metal3", "via3", "metal4", "via4", "metal5", "via5", "metaltop", "outline", "nat", "v5_xtor", "vendor"]
 
 
 [pdk.stack.implementation]
 site = "GF018hv5v_green_sc9"
 tech_lef = "implementation/lef/gf180mcu_6LM_1TM_9K_9t_tech.lef"
 cell_lef = "implementation/lef/gf180mcu_6LM_1TM_9K_9t_sc.lef"
-io_horizontal_layers = ["Metal3"]
-io_vertical_layers = ["Metal4"]
+gds = "implementation/gds/gf180mcu_fd_sc_mcu9t5v0.gds"
+layer_map = "implementation/gds/gf180mcu.map"
+io_horizontal_layers = ["Metal3", "outline", "nat", "v5_xtor", "vendor"]
+io_vertical_layers = ["Metal4", "outline", "nat", "v5_xtor", "vendor"]
 routing_min_layer = "Metal1"
 routing_max_layer = "MetalTop"
 rcx_rules = "implementation/rcx/gf180mcu_1p6m_1tm_9k_sp_smim_OPTB_bst.rules"

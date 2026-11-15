@@ -360,6 +360,42 @@
       "color": "#9a7b4f",
       "pattern": "Solid",
       "visible": true
+    },
+    {
+      "name": "outline",
+      "color": "#f1c40f",
+      "pattern": "Grid",
+      "visible": true
+    },
+    {
+      "name": "nat",
+      "color": "#7f8c8d",
+      "pattern": "Sparse dots",
+      "visible": false
+    },
+    {
+      "name": "nwell.label",
+      "color": "#b07d4f",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "lvpwell.label",
+      "color": "#9a7b4f",
+      "pattern": "Horizontal",
+      "visible": false
+    },
+    {
+      "name": "v5_xtor",
+      "color": "#e67e22",
+      "pattern": "Cross hatch",
+      "visible": false
+    },
+    {
+      "name": "vendor",
+      "color": "#95a5a6",
+      "pattern": "Horizontal",
+      "visible": false
     }
   ]
 }

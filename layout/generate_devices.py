@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -79,6 +80,59 @@ def build_library(package_root: Path) -> dict:
     }
 
 
+def _slugify(name: str) -> str:
+    value = re.sub(r"[^A-Za-z0-9._-]+", "_", name.strip())
+    return value.strip("._-") or "device"
+
+
+def write_library(library: dict, output: Path) -> None:
+    """Write the index plus one ``.icelay`` file per device."""
+    device_dir = output.parent / "devices"
+    device_dir.mkdir(parents=True, exist_ok=True)
+    for existing in device_dir.glob("*.icelay"):
+        existing.unlink()
+    used: set[str] = set()
+    cells = []
+    for cell in library["cells"]:
+        slug = _slugify(cell["name"])
+        candidate = slug
+        suffix = 2
+        while candidate.lower() in used:
+            candidate = f"{slug}_{suffix}"
+            suffix += 1
+        used.add(candidate.lower())
+        relative = f"devices/{candidate}.icelay"
+        payload = {
+            "format": "ice-layout",
+            "schema_version": 2,
+            "device": {
+                "name": cell["name"],
+                "category": cell.get("category", ""),
+                "source": cell.get("source", ""),
+                "pdk": library.get("pdk", ""),
+                "bounds": cell["bounds"],
+                "shapes": cell["shapes"],
+                "ports": cell.get("ports", []),
+                "parameters": cell.get("parameters", []),
+                "generator": cell.get("generator"),
+            },
+        }
+        (output.parent / relative).write_text(
+            json.dumps(payload, separators=(",", ":")) + "\n"
+        )
+        cells.append(
+            {
+                "name": cell["name"],
+                "category": cell.get("category", ""),
+                "source": cell.get("source", ""),
+                "layout": relative,
+            }
+        )
+    library = dict(library)
+    library["cells"] = cells
+    output.write_text(json.dumps(library, separators=(",", ":")) + "\n")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -90,8 +144,8 @@ def main() -> int:
     args = parser.parse_args()
     package_root = HERE.parent
     library = build_library(package_root)
-    args.output.write_text(json.dumps(library, separators=(",", ":")) + "\n")
-    print(f"Wrote {args.output} ({len(library['cells'])} cells)")
+    write_library(library, args.output)
+    print(f"Wrote {args.output} and {len(library['cells'])} .icelay device files")
     return 0
 
 

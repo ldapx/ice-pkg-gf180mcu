@@ -10,8 +10,8 @@ The package contains:
 - the GF180MCU ngspice simulation subset under `libs.tech/ngspice`
   (`design.ngspice` and `sm141064*.ngspice`);
 - the 9-track, 5 V standard-cell implementation set under `implementation/`
-  (technology/cell LEF, Liberty, OpenRCX rules, and a tapcell hook for all four
-  metal stacks).
+  (technology/cell LEF, Liberty, merged standard-cell GDS, OpenRCX rules, and a
+  tapcell hook for all four metal stacks).
 
 ## PDK metadata
 
@@ -39,9 +39,10 @@ The package ships ICE-native PCell replicas under `layout/`:
 - `layout/pcells.py` implements the GF180MCU PCell families with the
   `icepy.pcells` layout builder API (MOS, BJT, MOS/MIM capacitors, diodes, and
   the full poly/diffusion/well/metal resistor family).
-- `layout/devices.json` is the generated ICE layout device library used by the
-  Devices panel. It contains default geometry, parameter metadata, and
-  generator bindings.
+- `layout/devices.json` indexes the device library used by the Devices panel.
+  Every device is a real layout cell stored as
+  `layout/devices/<name>.icelay`; the index carries categories and generator
+  bindings.
 - `layout/device_generator.py` regenerates geometry when a parameter changes.
 - `layout/generate_devices.py` rebuilds the library from the PCell definitions.
 
@@ -66,6 +67,8 @@ PYTHONPATH=<ice>/build/linux/x86_64/release:<ice>/python \
 - `implementation/lef/` — technology and cell LEF for 3LM, 4LM, 5LM, and 6LM
   stacks;
 - `implementation/lib/` — `gf180mcu_fd_sc_mcu9t5v0` `tt_025C_5v00` Liberty;
+- `implementation/gds/` — merged `gf180mcu_fd_sc_mcu9t5v0` standard-cell GDS and
+  the KLayout DEF-to-GDS layer map;
 - `implementation/rcx/` — OpenRCX extraction rules for each stack;
 - `implementation/tapcell.tcl` — best-effort tapcell/endcap insertion hook.
   If the floorplan site geometry cannot fit the endcap pattern, insertion is

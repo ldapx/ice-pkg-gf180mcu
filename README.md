@@ -7,13 +7,16 @@ an external OpenROAD-flow-scripts checkout.
 
 The package contains:
 
-- the GF180MCU ngspice simulation subset under `libs.tech/ngspice`
+- the GF180MCU ngspice simulation subset under `simulation/ngspice`
   (`design.ngspice` and `sm141064*.ngspice`);
 - the 9-track, 5 V standard-cell implementation set under `implementation/`
-  (technology/cell LEF, Liberty, merged standard-cell GDS, OpenRCX rules, and a
-  tapcell hook for all four metal stacks).
+  (shared cell LEF, Liberty, merged standard-cell GDS, layer map, and per-stack
+  technology LEF/OpenRCX rules for all four metal stacks).
 
 ## PDK metadata
+
+The package declares a 5 nm manufacturing grid (`manufacturing_grid = 5`).
+ICE uses it as the default layout grid for new layouts.
 
 The package declares the GF180MCU drawing and routing layers in `package.toml`
 under `[pdk]`. ICE uses these layers when the package technology is activated
@@ -34,17 +37,18 @@ package does not include duplicate SVG files.
 
 ## Layout PCells
 
-The package ships ICE-native PCell replicas under `layout/`:
+The package ships ICE-native PCell replicas under `layout/devices/`:
 
-- `layout/pcells.py` implements the GF180MCU PCell families with the
-  `icepy.pcells` layout builder API (MOS, BJT, MOS/MIM capacitors, diodes, and
-  the full poly/diffusion/well/metal resistor family).
-- `layout/devices.json` indexes the device library used by the Devices panel.
-  Every device is a real layout cell stored as
-  `layout/devices/<name>.icelay`; the index carries categories and generator
-  bindings.
-- `layout/device_generator.py` regenerates geometry when a parameter changes.
-- `layout/generate_devices.py` rebuilds the library from the PCell definitions.
+- `layout/devices/pcell/pcells.py` implements the GF180MCU PCell families with
+  the `icepy.pcells` layout builder API (MOS, BJT, MOS/MIM capacitors, diodes,
+  and the full poly/diffusion/well/metal resistor family).
+- `layout/devices/index.json` indexes the parameterized device library used by
+  the Devices panel. These PCells are implemented by
+  `layout/devices/pcell/pcells.py` and `layout/devices/generator.py`, so they
+  have no stored geometry snapshot. Fixed devices, when present, are stored as
+  `layout/devices/fixed/*.icelay`.
+- `layout/devices/generator.py` regenerates geometry when a parameter changes.
+- `layout/devices/build.py` rebuilds the index from the PCell definitions.
 
 The device library also records the GF180MCU purpose datatypes: `dummy`
 (4), `label` (10), `slot` (3), and `block` (5) for the metal layers. ICE groups
@@ -52,11 +56,11 @@ these under their base layer number and keeps non-drawing purposes hidden by
 default.
 
 The PCells do not require KLayout, Volare, CIEL, or `PDK_ROOT`. Regenerate the
-library after editing `layout/pcells.py`:
+library after editing `layout/devices/pcell/pcells.py`:
 
 ```text
 PYTHONPATH=<ice>/build/linux/x86_64/release:<ice>/python \
-  python3 layout/generate_devices.py
+  python3 layout/devices/build.py
 ```
 
 ## Physical implementation
@@ -64,15 +68,17 @@ PYTHONPATH=<ice>/build/linux/x86_64/release:<ice>/python \
 `package.toml` declares explicit per-stack implementation data for the
 9-track, 5 V standard-cell library:
 
-- `implementation/lef/` — technology and cell LEF for 3LM, 4LM, 5LM, and 6LM
-  stacks;
-- `implementation/lib/` — `gf180mcu_fd_sc_mcu9t5v0` `tt_025C_5v00` Liberty;
-- `implementation/gds/` — merged `gf180mcu_fd_sc_mcu9t5v0` standard-cell GDS and
-  the KLayout DEF-to-GDS layer map;
-- `implementation/rcx/` — OpenRCX extraction rules for each stack;
-- `implementation/tapcell.tcl` — best-effort tapcell/endcap insertion hook.
-  If the floorplan site geometry cannot fit the endcap pattern, insertion is
-  skipped with a warning instead of aborting the floorplan stage.
+- `implementation/common/cells.lef` — shared standard-cell LEF;
+- `implementation/common/lib/tt.lib.gz` — `gf180mcu_fd_sc_mcu9t5v0` `tt_025C_5v00`
+  Liberty;
+- `implementation/common/stdcells.gds` — merged `gf180mcu_fd_sc_mcu9t5v0`
+  standard-cell GDS;
+- `implementation/common/layer.map` — KLayout DEF-to-GDS layer map;
+- `implementation/common/scripts/tapcell.tcl` — best-effort tapcell/endcap
+  insertion hook. If the floorplan site geometry cannot fit the endcap pattern,
+  insertion is skipped with a warning instead of aborting the floorplan stage;
+- `implementation/stacks/<stack>/tech.lef` and `rcx.rules` — technology LEF and
+  OpenRCX extraction rules for 3LM, 4LM, 5LM, and 6LM.
 
 The default stack is `5LM_1TM`; the default corner is `tt`. No
 `OPENROAD_FLOW_SCRIPTS` environment variable is needed.

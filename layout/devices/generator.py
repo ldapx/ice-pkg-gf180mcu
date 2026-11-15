@@ -4,10 +4,10 @@
 
 ICE invokes this script with:
 
-    device_generator.py --pdk-root <package> --module pcells --class nmos \
+    generator.py --pdk-root <package> --module pcells --class nmos \
                         --params-file params.json --output geometry.json
 
-The actual device implementations live in ``layout/pcells.py`` and use the
+The actual device implementations live in ``layout/devices/pcell/pcells.py`` and use the
 ``icepy`` layout builder API shipped with ICE.
 """
 

@@ -28,6 +28,7 @@ default_schematic = "gf180mcu_top"
 id = "gf180mcuA"
 aliases = ["gf180mcu", "gf180mcua"]
 default_stack = "5LM_1TM"
+manufacturing_grid = 5
 
 [pdk.implementation]
 engine = "openroad"
@@ -37,7 +38,7 @@ min_yosys = "0.40"
 
 [pdk.simulation]
 engine = "ngspice"
-root = "libs.tech/ngspice"
+root = "simulation/ngspice"
 model_file = "sm141064.ngspice"
 section = "typical"
 includes = ["design.ngspice"]
@@ -260,19 +261,19 @@ layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "p
 
 [pdk.stack.implementation]
 site = "GF018hv5v_green_sc9"
-tech_lef = "implementation/lef/gf180mcu_3LM_1TM_9K_9t_tech.lef"
-cell_lef = "implementation/lef/gf180mcu_3LM_1TM_9K_9t_sc.lef"
-gds = "implementation/gds/gf180mcu_fd_sc_mcu9t5v0.gds"
-layer_map = "implementation/gds/gf180mcu.map"
+tech_lef = "implementation/stacks/3LM_1TM/tech.lef"
+cell_lef = "implementation/common/cells.lef"
+gds = "implementation/common/stdcells.gds"
+layer_map = "implementation/common/layer.map"
 io_horizontal_layers = ["Metal3", "outline", "nat", "v5_xtor", "vendor"]
 io_vertical_layers = ["Metal4", "outline", "nat", "v5_xtor", "vendor"]
 routing_min_layer = "Metal1"
 routing_max_layer = "Metal3"
-rcx_rules = "implementation/rcx/gf180mcu_1p3m_1tm_9k_sp_smim_OPTA_bst.rules"
-tapcell_script = "implementation/tapcell.tcl"
+rcx_rules = "implementation/stacks/3LM_1TM/rcx.rules"
+tapcell_script = "implementation/common/scripts/tapcell.tcl"
 fill_cells = ["gf180mcu_fd_sc_mcu9t5v0__fill_64", "gf180mcu_fd_sc_mcu9t5v0__fill_32", "gf180mcu_fd_sc_mcu9t5v0__fill_16", "gf180mcu_fd_sc_mcu9t5v0__fill_8", "gf180mcu_fd_sc_mcu9t5v0__fill_4", "gf180mcu_fd_sc_mcu9t5v0__fill_2", "gf180mcu_fd_sc_mcu9t5v0__fill_1"]
 [pdk.stack.implementation.liberty]
-tt = ["implementation/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_5v00.lib.gz"]
+tt = ["implementation/common/lib/tt.lib.gz"]
 
 [[pdk.stack]]
 id = "4LM_1TM"
@@ -282,19 +283,19 @@ layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "p
 
 [pdk.stack.implementation]
 site = "GF018hv5v_green_sc9"
-tech_lef = "implementation/lef/gf180mcu_4LM_1TM_9K_9t_tech.lef"
-cell_lef = "implementation/lef/gf180mcu_4LM_1TM_9K_9t_sc.lef"
-gds = "implementation/gds/gf180mcu_fd_sc_mcu9t5v0.gds"
-layer_map = "implementation/gds/gf180mcu.map"
+tech_lef = "implementation/stacks/4LM_1TM/tech.lef"
+cell_lef = "implementation/common/cells.lef"
+gds = "implementation/common/stdcells.gds"
+layer_map = "implementation/common/layer.map"
 io_horizontal_layers = ["Metal3", "outline", "nat", "v5_xtor", "vendor"]
 io_vertical_layers = ["Metal4", "outline", "nat", "v5_xtor", "vendor"]
 routing_min_layer = "Metal1"
 routing_max_layer = "Metal4"
-rcx_rules = "implementation/rcx/gf180mcu_1p4m_1tm_9k_sp_smim_OPTB_bst.rules"
-tapcell_script = "implementation/tapcell.tcl"
+rcx_rules = "implementation/stacks/4LM_1TM/rcx.rules"
+tapcell_script = "implementation/common/scripts/tapcell.tcl"
 fill_cells = ["gf180mcu_fd_sc_mcu9t5v0__fill_64", "gf180mcu_fd_sc_mcu9t5v0__fill_32", "gf180mcu_fd_sc_mcu9t5v0__fill_16", "gf180mcu_fd_sc_mcu9t5v0__fill_8", "gf180mcu_fd_sc_mcu9t5v0__fill_4", "gf180mcu_fd_sc_mcu9t5v0__fill_2", "gf180mcu_fd_sc_mcu9t5v0__fill_1"]
 [pdk.stack.implementation.liberty]
-tt = ["implementation/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_5v00.lib.gz"]
+tt = ["implementation/common/lib/tt.lib.gz"]
 
 [[pdk.stack]]
 id = "5LM_1TM"
@@ -304,19 +305,19 @@ layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "p
 
 [pdk.stack.implementation]
 site = "GF018hv5v_green_sc9"
-tech_lef = "implementation/lef/gf180mcu_5LM_1TM_9K_9t_tech.lef"
-cell_lef = "implementation/lef/gf180mcu_5LM_1TM_9K_9t_sc.lef"
-gds = "implementation/gds/gf180mcu_fd_sc_mcu9t5v0.gds"
-layer_map = "implementation/gds/gf180mcu.map"
+tech_lef = "implementation/stacks/5LM_1TM/tech.lef"
+cell_lef = "implementation/common/cells.lef"
+gds = "implementation/common/stdcells.gds"
+layer_map = "implementation/common/layer.map"
 io_horizontal_layers = ["Metal3", "outline", "nat", "v5_xtor", "vendor"]
 io_vertical_layers = ["Metal4", "outline", "nat", "v5_xtor", "vendor"]
 routing_min_layer = "Metal1"
 routing_max_layer = "Metal5"
-rcx_rules = "implementation/rcx/gf180mcu_1p5m_1tm_9k_sp_smim_OPTB_bst.rules"
-tapcell_script = "implementation/tapcell.tcl"
+rcx_rules = "implementation/stacks/5LM_1TM/rcx.rules"
+tapcell_script = "implementation/common/scripts/tapcell.tcl"
 fill_cells = ["gf180mcu_fd_sc_mcu9t5v0__fill_64", "gf180mcu_fd_sc_mcu9t5v0__fill_32", "gf180mcu_fd_sc_mcu9t5v0__fill_16", "gf180mcu_fd_sc_mcu9t5v0__fill_8", "gf180mcu_fd_sc_mcu9t5v0__fill_4", "gf180mcu_fd_sc_mcu9t5v0__fill_2", "gf180mcu_fd_sc_mcu9t5v0__fill_1"]
 [pdk.stack.implementation.liberty]
-tt = ["implementation/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_5v00.lib.gz"]
+tt = ["implementation/common/lib/tt.lib.gz"]
 
 [[pdk.stack]]
 id = "6LM_1TM"
@@ -326,16 +327,16 @@ layers = ["comp", "dnwell", "nwell", "lvpwell", "dualgate", "poly2", "nplus", "p
 
 [pdk.stack.implementation]
 site = "GF018hv5v_green_sc9"
-tech_lef = "implementation/lef/gf180mcu_6LM_1TM_9K_9t_tech.lef"
-cell_lef = "implementation/lef/gf180mcu_6LM_1TM_9K_9t_sc.lef"
-gds = "implementation/gds/gf180mcu_fd_sc_mcu9t5v0.gds"
-layer_map = "implementation/gds/gf180mcu.map"
+tech_lef = "implementation/stacks/6LM_1TM/tech.lef"
+cell_lef = "implementation/common/cells.lef"
+gds = "implementation/common/stdcells.gds"
+layer_map = "implementation/common/layer.map"
 io_horizontal_layers = ["Metal3", "outline", "nat", "v5_xtor", "vendor"]
 io_vertical_layers = ["Metal4", "outline", "nat", "v5_xtor", "vendor"]
 routing_min_layer = "Metal1"
 routing_max_layer = "MetalTop"
-rcx_rules = "implementation/rcx/gf180mcu_1p6m_1tm_9k_sp_smim_OPTB_bst.rules"
-tapcell_script = "implementation/tapcell.tcl"
+rcx_rules = "implementation/stacks/6LM_1TM/rcx.rules"
+tapcell_script = "implementation/common/scripts/tapcell.tcl"
 fill_cells = ["gf180mcu_fd_sc_mcu9t5v0__fill_64", "gf180mcu_fd_sc_mcu9t5v0__fill_32", "gf180mcu_fd_sc_mcu9t5v0__fill_16", "gf180mcu_fd_sc_mcu9t5v0__fill_8", "gf180mcu_fd_sc_mcu9t5v0__fill_4", "gf180mcu_fd_sc_mcu9t5v0__fill_2", "gf180mcu_fd_sc_mcu9t5v0__fill_1"]
 [pdk.stack.implementation.liberty]
-tt = ["implementation/lib/gf180mcu_fd_sc_mcu9t5v0__tt_025C_5v00.lib.gz"]
+tt = ["implementation/common/lib/tt.lib.gz"]

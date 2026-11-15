@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Regenerate ``layout/devices.json`` for the GF180MCU package.
+"""Regenerate ``layout/devices/index.json`` for the GF180MCU package.
 
 Run from the package root with the ICE Python bindings available:
 
     PYTHONPATH=<ice>/build/linux/x86_64/release:<ice>/python \
-        python3 layout/generate_devices.py
+        python3 layout/devices/build.py
 """
 
 from __future__ import annotations
@@ -17,33 +17,19 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE / "pcell"))
 
 import pcells  # noqa: E402
 
 
 def build_library(package_root: Path) -> dict:
-    try:
-        from icepy import pcells as runtime
-    except ImportError as error:
-        raise SystemExit(
-            "icepy is required to regenerate the GF180MCU device library. "
-            "Build the icepy target and set PYTHONPATH to its directory."
-        ) from error
-
     cells = []
     for implementation in pcells.PCELLS:
-        geometry = runtime.generate_package_geometry(
-            package_root, "pcells", implementation.__name__
-        )
         cells.append(
             {
                 "name": implementation.name,
                 "category": implementation.category,
-                "source": "layout/pcells.py",
-                "bounds": geometry["bounds"],
-                "shapes": geometry["shapes"],
-                "ports": geometry.get("ports", []),
+                "source": "layout/devices/pcell/pcells.py",
                 "parameters": [dict(spec) for spec in implementation.parameters],
                 "generator": {
                     "module": "pcells",
@@ -86,14 +72,26 @@ def _slugify(name: str) -> str:
 
 
 def write_library(library: dict, output: Path) -> None:
-    """Write the index plus one ``.icelay`` file per device."""
-    device_dir = output.parent / "devices"
+    """Write the index, plus ``.icelay`` cells for fixed devices only."""
+    device_dir = output.parent / "fixed"
     device_dir.mkdir(parents=True, exist_ok=True)
     for existing in device_dir.glob("*.icelay"):
         existing.unlink()
     used: set[str] = set()
     cells = []
+    static_count = 0
     for cell in library["cells"]:
+        if cell.get("generator"):
+            cells.append(
+                {
+                    "name": cell["name"],
+                    "category": cell.get("category", ""),
+                    "source": cell.get("source", ""),
+                    "generator": cell["generator"],
+                    "parameters": cell.get("parameters", []),
+                }
+            )
+            continue
         slug = _slugify(cell["name"])
         candidate = slug
         suffix = 2
@@ -101,7 +99,7 @@ def write_library(library: dict, output: Path) -> None:
             candidate = f"{slug}_{suffix}"
             suffix += 1
         used.add(candidate.lower())
-        relative = f"devices/{candidate}.icelay"
+        relative = f"fixed/{candidate}.icelay"
         payload = {
             "format": "ice-layout",
             "schema_version": 2,
@@ -114,7 +112,7 @@ def write_library(library: dict, output: Path) -> None:
                 "shapes": cell["shapes"],
                 "ports": cell.get("ports", []),
                 "parameters": cell.get("parameters", []),
-                "generator": cell.get("generator"),
+                "generator": None,
             },
         }
         (output.parent / relative).write_text(
@@ -128,24 +126,29 @@ def write_library(library: dict, output: Path) -> None:
                 "layout": relative,
             }
         )
+        static_count += 1
+    if static_count == 0:
+        try:
+            device_dir.rmdir()
+        except OSError:
+            pass
     library = dict(library)
     library["cells"] = cells
     output.write_text(json.dumps(library, separators=(",", ":")) + "\n")
-
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--output",
         type=Path,
-        default=HERE / "devices.json",
-        help="Output library path (default: layout/devices.json)",
+        default=HERE / "index.json",
+        help="Output library path (default: layout/devices/index.json)",
     )
     args = parser.parse_args()
-    package_root = HERE.parent
+    package_root = HERE.parent.parent
     library = build_library(package_root)
     write_library(library, args.output)
-    print(f"Wrote {args.output} and {len(library['cells'])} .icelay device files")
+    print(f"Wrote {args.output}")
     return 0
 
 

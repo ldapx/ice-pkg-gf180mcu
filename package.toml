@@ -41,6 +41,7 @@ engine = "ngspice"
 root = "simulation/ngspice"
 model_file = "sm141064.ngspice"
 section = "typical"
+spiceinit = "spinit"
 includes = ["design.ngspice"]
 options = []
 requires_osdi = false

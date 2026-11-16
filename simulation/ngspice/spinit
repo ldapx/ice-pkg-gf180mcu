@@ -1,0 +1,6 @@
+* ngspice initialization for gf180mcu
+* assert BSIM compatibility mode with "nf" vs. "W": the model cards are binned
+* .subckt wrappers that take nf/par parameters, which plain ngspice rejects.
+set ngbehavior=hsa
+* "nomodcheck" speeds up loading time
+set ng_nomodcheck

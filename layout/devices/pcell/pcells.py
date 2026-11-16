@@ -114,6 +114,10 @@ BJT_PARAMETERS = [
 class _GfPcell(pcells.PackagePcell):
     pdk = PDK
     layers = LAYERS
+    # GF180MCU contact rules: 0.22 um exact contact width, 0.25 um spacing.
+    contact_size = 220
+    contact_spacing = 250
+    contact_margin = 120
 
 
 class nmos(_GfPcell):

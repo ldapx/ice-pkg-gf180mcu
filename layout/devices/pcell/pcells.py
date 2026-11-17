@@ -123,6 +123,8 @@ class _GfPcell(pcells.PackagePcell):
     contact_size = 220
     contact_spacing = 250
     contact_margin = 120
+    # GF180MCU via1 is 0.26 um.
+    via_size = 260
 
 
 class nmos(_GfPcell):

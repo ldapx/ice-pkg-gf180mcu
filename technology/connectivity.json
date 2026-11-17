@@ -1,0 +1,197 @@
+{
+  "format": "ice-pdk-connectivity",
+  "schema_version": 1,
+  "layers": [
+    {
+      "name": "comp",
+      "role": "active"
+    },
+    {
+      "name": "poly2",
+      "role": "gate"
+    },
+    {
+      "name": "metal1",
+      "role": "conductor"
+    },
+    {
+      "name": "metal2",
+      "role": "conductor"
+    },
+    {
+      "name": "metal3",
+      "role": "conductor"
+    },
+    {
+      "name": "metal4",
+      "role": "conductor"
+    },
+    {
+      "name": "metal5",
+      "role": "conductor"
+    },
+    {
+      "name": "metaltop",
+      "role": "conductor"
+    },
+    {
+      "name": "pad",
+      "role": "conductor"
+    },
+    {
+      "name": "contact",
+      "role": "via"
+    },
+    {
+      "name": "via1",
+      "role": "via"
+    },
+    {
+      "name": "via2",
+      "role": "via"
+    },
+    {
+      "name": "via3",
+      "role": "via"
+    },
+    {
+      "name": "via4",
+      "role": "via"
+    },
+    {
+      "name": "via5",
+      "role": "via"
+    },
+    {
+      "name": "dnwell",
+      "role": "marker"
+    },
+    {
+      "name": "nwell",
+      "role": "marker"
+    },
+    {
+      "name": "lvpwell",
+      "role": "marker"
+    },
+    {
+      "name": "dualgate",
+      "role": "marker"
+    },
+    {
+      "name": "nplus",
+      "role": "marker"
+    },
+    {
+      "name": "pplus",
+      "role": "marker"
+    },
+    {
+      "name": "sab",
+      "role": "marker"
+    },
+    {
+      "name": "resistor",
+      "role": "marker"
+    },
+    {
+      "name": "fusetop",
+      "role": "marker"
+    },
+    {
+      "name": "outline",
+      "role": "marker"
+    },
+    {
+      "name": "nat",
+      "role": "marker"
+    },
+    {
+      "name": "v5_xtor",
+      "role": "marker"
+    },
+    {
+      "name": "vendor",
+      "role": "marker"
+    }
+  ],
+  "vias": [
+    {
+      "name": "contact",
+      "lower": [
+        "comp",
+        "poly2"
+      ],
+      "upper": [
+        "metal1"
+      ],
+      "size": 220,
+      "enclosure": 70
+    },
+    {
+      "name": "via1",
+      "lower": [
+        "metal1"
+      ],
+      "upper": [
+        "metal2"
+      ],
+      "size": 260,
+      "enclosure": 60
+    },
+    {
+      "name": "via2",
+      "lower": [
+        "metal2"
+      ],
+      "upper": [
+        "metal3"
+      ],
+      "size": 260,
+      "enclosure": 60
+    },
+    {
+      "name": "via3",
+      "lower": [
+        "metal3"
+      ],
+      "upper": [
+        "metal4"
+      ],
+      "size": 260,
+      "enclosure": 60
+    },
+    {
+      "name": "via4",
+      "lower": [
+        "metal4"
+      ],
+      "upper": [
+        "metal5"
+      ],
+      "size": 260,
+      "enclosure": 60
+    },
+    {
+      "name": "via5",
+      "lower": [
+        "metal5"
+      ],
+      "upper": [
+        "metaltop"
+      ],
+      "size": 260,
+      "enclosure": 60
+    }
+  ],
+  "routing": {
+    "stack": [
+      "metal1",
+      "metal2",
+      "metal3",
+      "metal4",
+      "metal5",
+      "metaltop"
+    ]
+  }
+}
